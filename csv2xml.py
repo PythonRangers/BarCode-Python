@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-#prova
->>>>>>> origin/master
+#failed sincronyzing
 import csv
 csvFile = 'ITALIA1.csv'
 xmlFile = 'ITALIA.xml'
