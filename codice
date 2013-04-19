@@ -1,0 +1,60 @@
+vocali = "aeiou" #stringa di controllo per le vocali
+consonanti = "bcdfghlmnpqrstvz" #stringa di controllo per le consonanti
+corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
+mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ] #array che contiene il mese di nascita
+
+def test(): #inizializzazione funzione
+  x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
+  y = raw_input("Cognome: ") #richiede un tipo di dato "stringa" per il cognome
+  data = str(raw_input("Data di nascita: (formato 'ggmmaaaa'): ")) #trasforma l'input numerico della data di nascita in una stringa
+  sesso = raw_input("Sesso (m/f): ") #richiede il sesso
+  me = data[2:4] #prende come mese gli elementi nunero 2 e 3 della stringa della data (mm)
+  indice = mesi.index(me) #trova a quale indice corrisponde quel numero 
+  mese = corr[indice] #associa lo stesso indice alle lettere dei mesi in modo da associargli la lettera
+  n = 0 #inizializzazione variabile per scorrere nella stringa del nome
+  c = 0 #inizializzazione variabile per scorrere nella stringa del cognome
+  nome = "" #creazione di un array vuoto per il nome
+  cognome = "" #creazione di un array vuoto per il cognome
+  nome_voc = [] #array vuoto per le consonanti nel nome
+  nome_cons = [] #array vuoto per le vocali nel nome
+  cognome_voc = [] #array vuoto per le vocali nel cognome
+  cognome_cons = [] #array vuoto per le consonanti nel cognome
+  for n in range(0, len(x)):
+    if x[n] in consonanti:
+      nome_cons.append(x[n]) #aggiunge all'array che si occupa delle consonanti del nome, le consonanti del nome
+    elif x[n] in vocali:
+      nome_voc.append(x[n]) #aggiunge all'array che si occupa delle vocali del nome, le vocali del nome
+  for c in range(0, len(y)):
+    if y[c] in consonanti:
+      cognome_cons.append(y[c]) #aggiunge all'array che si occupa delle consonanti del cognome, le consonanti del cognome
+    elif y[c] in vocali:
+      cognome_voc.append(y[c]) #aggiunge all'array che si occupa delle vocali del cognome, le vocali del cognome
+  print cognome_cons
+  print cognome_voc
+  print nome_cons
+  print nome_voc      
+  while len(nome) < 3: #mentre lo spazio riservato al nome ÃÂÃÂ¨ ancora piÃÂÃÂ¹ piccolo di 3
+    if len(nome_cons) == 1: #caso in cui ho un numero di consonanti < 3
+      nome = str(nome_cons[0] + nome_voc[0] + nome_voc[1]) #allora scrivo consonanti + vocali
+    if len(nome_cons) == 2: #caso in cui ne ho 2
+      nome = str(nome_cons[0] + nome_cons[1] + nome_voc[0]) #allora scrivo consonanti + vocali
+    if len(nome_cons) == 3: #caso in cui ne ho proprio 3
+      nome = str(nome_cons[0] + nome_cons[1] + nome_cons[2]) #allora scrivo quelle 3
+    if len(nome_cons) > 3: #se ne ho pi di 3
+      nome = str(nome_cons[0] + nome_cons[2] + nome_cons[3]) #scrivo la prima, la terza e la quarta
+  while len(cognome) < 3: #stessa cosa per il cognome
+    if len(cognome_cons) == 1:    
+      cognome = str(cognome_cons[0] + cognome_voc[0] + cognome_voc[1]) #stampa l'unica consonante e le prime due vocali
+    if len(cognome_cons) == 2:    
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_voc[0]) #stampa le prime due consonanti e la prima vocale
+    if len(cognome_cons) == 3:    
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2]) #stampa le tre consonanti
+    if len(cognome_cons) > 3:
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2]) #stampa la prima, terza e quarta consonante
+  if sesso == "f":
+    d = int(data[0:2])
+    codice = cognome + nome + data[6:8] + mese + str(d + 40)
+  else:
+    codice = cognome + nome + data[6:8] + mese + data[0:2]
+    
+  print codice.upper()
