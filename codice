@@ -1,3 +1,4 @@
+#claudio è gay
 vocali = "aeiou" #stringa di controllo per le vocali
 consonanti = "bcdfghlmnpqrstvz" #stringa di controllo per le consonanti
 corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
