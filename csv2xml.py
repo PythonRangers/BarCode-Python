@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#prova
+>>>>>>> origin/master
 import csv
 csvFile = 'ITALIA1.csv'
 xmlFile = 'ITALIA.xml'
