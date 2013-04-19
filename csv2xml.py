@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #failed sincronyzing
+=======
+<<<<<<< HEAD
+=======
+#prova
+#ciaociao
+>>>>>>> origin/master
+>>>>>>> pova3
 import csv
 csvFile = 'ITALIA1.csv'
 xmlFile = 'ITALIA.xml'
