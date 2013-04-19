@@ -1,4 +1,4 @@
-#prova scrittura
+#prova
 import csv
 csvFile = 'ITALIA1.csv'
 xmlFile = 'ITALIA.xml'
