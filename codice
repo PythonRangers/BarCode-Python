@@ -7,7 +7,9 @@ mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" 
 
 def test(): #inizializzazione funzione
   x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
+  x = x.upper()
   y = raw_input("Cognome: ") #richiede un tipo di dato "stringa" per il cognome
+  y = y.upper()
   data = str(raw_input("Data di nascita: (formato 'ggmmaaaa'): ")) #trasforma l'input numerico della data di nascita in una stringa
   sesso = raw_input("Sesso (m/f): ") #richiede il sesso
   me = data[2:4] #prende come mese gli elementi nunero 2 e 3 della stringa della data (mm)
