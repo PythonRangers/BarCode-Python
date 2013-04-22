@@ -2,7 +2,6 @@ vocali = "AEIOU" #stringa di controllo per le vocali
 consonanti = "BCDFGHLMNPQRSTVZ" #stringa di controllo per le consonanti
 corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
 mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ] #array che contiene il mese di nascita
-
 def test(): #inizializzazione funzione
   x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
   x = x.upper()
@@ -35,7 +34,7 @@ def test(): #inizializzazione funzione
   #print cognome_voc
   #print nome_cons
   #print nome_voc      
-  while len(nome) < 3: #mentre lo spazio riservato al nome ÃÂÃÂ¨ ancora piÃÂÃÂ¹ piccolo di 3
+  while len(nome) < 3: #mentre lo spazio riservato al nome piccolo di 3
     if len(nome_cons) == 1: #caso in cui ho un numero di consonanti < 3
       nome = str(nome_cons[0] + nome_voc[0] + nome_voc[1]) #allora scrivo consonanti + vocali
     if len(nome_cons) == 2: #caso in cui ne ho 2
