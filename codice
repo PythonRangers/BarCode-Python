@@ -1,5 +1,3 @@
-#claudio è gay
-#si è vero
 vocali = "AEIOU" #stringa di controllo per le vocali
 consonanti = "BCDFGHLMNPQRSTVZ" #stringa di controllo per le consonanti
 corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
