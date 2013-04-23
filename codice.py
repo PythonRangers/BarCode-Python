@@ -7,15 +7,32 @@ contr =["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h",
 num_corrisp_p = [1,0,5,7,9,13,15,17,19,21,1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23]
 num_corrisp_d = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 
+def codiceCatast(PROV,COMU):
+#@param PROV: string; Sigla provincia (es. RM)
+#@param COMU: string; Nome comune (es. ZAGAROLO)
+#@return: codeCom: string; Codice del comune (es. M141)
+    from xml.dom.minidom import parse, parseString
+    dom = parse("/home/pcx/Documenti/workspace/csv2xml/Comuni.xml")
+    provincia = dom.getElementsByTagName('provincia')
+    for node in provincia:
+        codeProv = node.getAttribute('code')
+        if codeProv == PROV:   
+            comuniList = node.getElementsByTagName('comune')
+            for comune in comuniList:
+                codeCom = comune.childNodes[0].nodeValue
+                nameCom = comune.getAttribute('name')
+                if nameCom == COMU:
+                    return codeCom
 
-
-def test(): #inizializzazione funzione
+def main(): #inizializzazione funzione
   x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
   x = x.upper()
   y = raw_input("Cognome: ") #richiede un tipo di dato "stringa" per il cognome
   y = y.upper()
   data = str(raw_input("Data di nascita: (formato 'ggmmaaaa'): ")) #trasforma l'input numerico della data di nascita in una stringa
   sesso = raw_input("Sesso (m/f): ") #richiede il sesso
+  comune = (raw_input("Comune di nascita: ")).upper()
+  provincia = (raw_input("Provincia di nascita (**): ")).upper()
   me = data[2:4] #prende come mese gli elementi nunero 2 e 3 della stringa della data (mm)
   indice = mesi.index(me) #trova a quale indice corrisponde quel numero 
   mese = corr[indice] #associa lo stesso indice alle lettere dei mesi in modo da associargli la lettera
@@ -64,6 +81,20 @@ def test(): #inizializzazione funzione
     codice = cognome + nome + data[6:8] + mese + str(d + 40)
   else:
     codice = cognome + nome + data[6:8] + mese + data[0:2]
+#Algoritmo per codice catastale
+  CATASTO = codiceCatast(provincia,comune)
+  codice = codice + CATASTO
+
+
+
+
+
+
+
+
+
+
+
 #Algoritmo per il carattere finale di controllo  
   pari = 0
   dispari = 0
