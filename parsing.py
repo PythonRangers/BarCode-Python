@@ -1,4 +1,7 @@
 def codiceCatast(PROV,COMU):
+#@param PROV: string; Sigla provincia (es. RM)
+#@param COMU: string; Nome comune (es. ZAGAROLO)
+#@return: codeCom: string; Codice del comune (es. M141)
     from xml.dom.minidom import parse, parseString
     dom = parse("Comuni.xml")
     provincia = dom.getElementsByTagName('provincia')
@@ -10,8 +13,4 @@ def codiceCatast(PROV,COMU):
                 codeCom = comune.childNodes[0].nodeValue
                 nameCom = comune.getAttribute('name')
                 if nameCom == COMU:
-                    print codeCom
-#PROV = "RM"
-#COMU = "ZAGAROLO"
-                    
-#codiceCatast(PROV, COMU)
+                    return codeCom
