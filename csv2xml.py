@@ -1,7 +1,7 @@
 import csv
-csvFile = 'ITALIA1.csv'
+csvFile = 'Comuni.csv'
 openCsv = open(csvFile)
-xmlFile = 'ITALIA.xml'
+xmlFile = 'Comuni.xml'
 csvData = csv.reader(openCsv)
 xmlData = open(xmlFile, 'w')
 xmlData.write('<?xml version="1.0"?>' + "\n")
