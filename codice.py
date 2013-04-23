@@ -1,7 +1,14 @@
 vocali = "AEIOU" #stringa di controllo per le vocali
 consonanti = "BCDFGHLMNPQRSTVZ" #stringa di controllo per le consonanti
+alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
-mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ] #array che contiene il mese di nascita
+mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ]#array che contiene il mese di nascita
+contr =["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v",",w","x","y","z"]
+num_corrisp_p = [1,0,5,7,9,13,15,17,19,21,1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23]
+num_corrisp_d = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+
+
+
 def test(): #inizializzazione funzione
   x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
   x = x.upper()
@@ -57,5 +64,21 @@ def test(): #inizializzazione funzione
     codice = cognome + nome + data[6:8] + mese + str(d + 40)
   else:
     codice = cognome + nome + data[6:8] + mese + data[0:2]
-    
-  print codice.upper()
+#Algoritmo per il carattere finale di controllo  
+  pari = 0
+  dispari = 0
+  code = codice.lower()
+  for n in range(0,len(code),2):
+   for x in range(0,len(contr)):
+      if code[n] == contr[x]:
+        pari = pari + int(num_corrisp_p[x])
+  for h in range(1,len(code),2):
+    for y in range(0,len(contr)):
+      if code[h] == contr[y]:
+        dispari = dispari + int(num_corrisp_d[y])
+  cont = pari + dispari
+  lett = cont % 26
+  new_code = code + alfabeto[lett]
+  
+  print new_code.upper()
+  
