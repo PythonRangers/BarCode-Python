@@ -1,8 +1,8 @@
-vocali = "AEIOU" #stringa di controllo per le vocali
-consonanti = "BCDFGHLMNPQRSTVZ" #stringa di controllo per le consonanti
+vocali = "AEIOU"
+consonanti = "BCDFGHLMNPQRSTVZ"
 alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"] #array che contiene tutte le lettere corrispondenti ai vari mesi dell'anno
-mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ]#array che contiene il mese di nascita
+corr = ["a", "b", "c", "d", "e", "h", "l", "m", "p", "r", "s", "t"]
+mesi = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ]
 contr =["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v",",w","x","y","z"]
 num_corrisp_p = [1,0,5,7,9,13,15,17,19,21,1,0,5,7,9,13,15,17,19,21,2,4,18,20,11,3,6,8,12,14,16,10,22,25,24,23]
 num_corrisp_d = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
@@ -11,8 +11,8 @@ def codiceCatast(PROV,COMU):
 #@param PROV: string; Sigla provincia (es. RM)
 #@param COMU: string; Nome comune (es. ZAGAROLO)
 #@return: codeCom: string; Codice del comune (es. M141)
-    from xml.dom.minidom import parse, parseString
-    dom = parse("/home/pcx/Documenti/workspace/csv2xml/Comuni.xml")
+    from xml.dom.minidom import parse
+    dom = parse("Comuni.xml")
     provincia = dom.getElementsByTagName('provincia')
     for node in provincia:
         codeProv = node.getAttribute('code')
@@ -24,22 +24,22 @@ def codiceCatast(PROV,COMU):
                 if nameCom == COMU:
                     return codeCom
 
-def main(): #inizializzazione funzione
+def main():
   x = raw_input("Nome: ") #richiede un tipo di dato "stringa" per il nome
   x = x.upper()
   y = raw_input("Cognome: ") #richiede un tipo di dato "stringa" per il cognome
   y = y.upper()
   data = str(raw_input("Data di nascita: (formato 'ggmmaaaa'): ")) #trasforma l'input numerico della data di nascita in una stringa
-  sesso = raw_input("Sesso (m/f): ") #richiede il sesso
+  sesso = raw_input("Sesso (m/f): ")
   comune = (raw_input("Comune di nascita: ")).upper()
   provincia = (raw_input("Provincia di nascita (**): ")).upper()
-  me = data[2:4] #prende come mese gli elementi nunero 2 e 3 della stringa della data (mm)
+  me = data[2:4]
   indice = mesi.index(me) #trova a quale indice corrisponde quel numero 
-  mese = corr[indice] #associa lo stesso indice alle lettere dei mesi in modo da associargli la lettera
+  mese = corr[indice]
   n = 0 #inizializzazione variabile per scorrere nella stringa del nome
   c = 0 #inizializzazione variabile per scorrere nella stringa del cognome
-  nome = "" #creazione di un array vuoto per il nome
-  cognome = "" #creazione di un array vuoto per il cognome
+  nome = "" #creazione di una stringa vuota per il nome
+  cognome = "" #creazione di una stringa vuota per il cognome
   nome_voc = [] #array vuoto per le consonanti nel nome
   nome_cons = [] #array vuoto per le vocali nel nome
   cognome_voc = [] #array vuoto per le vocali nel cognome
@@ -54,28 +54,24 @@ def main(): #inizializzazione funzione
       cognome_cons.append(y[c]) #aggiunge all'array che si occupa delle consonanti del cognome, le consonanti del cognome
     elif y[c] in vocali:
       cognome_voc.append(y[c]) #aggiunge all'array che si occupa delle vocali del cognome, le vocali del cognome
-  #print cognome_cons
-  #print cognome_voc
-  #print nome_cons
-  #print nome_voc      
-  while len(nome) < 3: #mentre lo spazio riservato al nome piccolo di 3
-    if len(nome_cons) == 1: #caso in cui ho un numero di consonanti < 3
-      nome = str(nome_cons[0] + nome_voc[0] + nome_voc[1]) #allora scrivo consonanti + vocali
-    if len(nome_cons) == 2: #caso in cui ne ho 2
-      nome = str(nome_cons[0] + nome_cons[1] + nome_voc[0]) #allora scrivo consonanti + vocali
-    if len(nome_cons) == 3: #caso in cui ne ho proprio 3
-      nome = str(nome_cons[0] + nome_cons[1] + nome_cons[2]) #allora scrivo quelle 3
-    if len(nome_cons) > 3: #se ne ho pi di 3
-      nome = str(nome_cons[0] + nome_cons[2] + nome_cons[3]) #scrivo la prima, la terza e la quarta
-  while len(cognome) < 3: #stessa cosa per il cognome
+  while len(nome) < 3:
+    if len(nome_cons) == 1:
+      nome = str(nome_cons[0] + nome_voc[0] + nome_voc[1])
+    if len(nome_cons) == 2:
+      nome = str(nome_cons[0] + nome_cons[1] + nome_voc[0])
+    if len(nome_cons) == 3:
+      nome = str(nome_cons[0] + nome_cons[1] + nome_cons[2])
+    if len(nome_cons) > 3:
+      nome = str(nome_cons[0] + nome_cons[2] + nome_cons[3]) 
+  while len(cognome) < 3:
     if len(cognome_cons) == 1:    
-      cognome = str(cognome_cons[0] + cognome_voc[0] + cognome_voc[1]) #stampa l'unica consonante e le prime due vocali
+      cognome = str(cognome_cons[0] + cognome_voc[0] + cognome_voc[1])
     if len(cognome_cons) == 2:    
-      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_voc[0]) #stampa le prime due consonanti e la prima vocale
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_voc[0])
     if len(cognome_cons) == 3:    
-      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2]) #stampa le tre consonanti
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2])
     if len(cognome_cons) > 3:
-      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2]) #stampa la prima, terza e quarta consonante
+      cognome = str(cognome_cons[0] + cognome_cons[1] + cognome_cons[2])
   if sesso == "f":
     d = int(data[0:2])
     codice = cognome + nome + data[6:8] + mese + str(d + 40)
@@ -84,17 +80,6 @@ def main(): #inizializzazione funzione
 #Algoritmo per codice catastale
   CATASTO = codiceCatast(provincia,comune)
   codice = codice + CATASTO
-
-
-
-
-
-
-
-
-
-
-
 #Algoritmo per il carattere finale di controllo  
   pari = 0
   dispari = 0
@@ -110,6 +95,7 @@ def main(): #inizializzazione funzione
   cont = pari + dispari
   lett = cont % 26
   new_code = code + alfabeto[lett]
+
   
   print new_code.upper()
   
