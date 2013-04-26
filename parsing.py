@@ -1,4 +1,4 @@
-def codiceCatast(PROV,COMU):
+def codiceCatasto(PROV,COMU):
 #@param PROV: string; Sigla provincia (es. RM)
 #@param COMU: string; Nome comune (es. ZAGAROLO)
 #@return: codeCom: string; Codice del comune (es. M141)
