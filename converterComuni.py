@@ -1,8 +1,15 @@
-import csv
+#===============================================================================
+# This module is usefull to create simply an .xml file of Comuni from a .csv
+# 
+# Created on: ?
+# Last modified on: 26/apr/2013
+# Author: ?
+#===============================================================================
+from csv import reader
 csvFile = 'Comuni.csv'
 openCsv = open(csvFile)
 xmlFile = 'Comuni.xml'
-csvData = csv.reader(openCsv)
+csvData = reader(openCsv)
 xmlData = open(xmlFile, 'w')
 xmlData.write('<?xml version="1.0"?>' + "\n")
 xmlData.write('<comuni>' + "\n")

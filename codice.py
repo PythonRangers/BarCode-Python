@@ -12,7 +12,7 @@ def codiceCatast(PROV,COMU):
 #@param COMU: string; Nome comune (es. ZAGAROLO)
 #@return: codeCom: string; Codice del comune (es. M141)
     from xml.dom.minidom import parse
-    dom = parse("Comuni.xml")
+    dom = parse("/home/pcx/Documenti/workspace/csv2xml/Comuni.xml")
     provincia = dom.getElementsByTagName('provincia')
     for node in provincia:
         codeProv = node.getAttribute('code')
