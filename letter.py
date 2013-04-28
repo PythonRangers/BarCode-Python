@@ -11,7 +11,7 @@
 def makeLetter(letter):
 #@param: letter; string; The letter 
     from xml.dom.minidom import parse
-    dom = parse("/home/pcx/Documenti/workspace/csv2xml/Caratteri.xml")
+    dom = parse("Caratteri.xml")
     carattere = dom.getElementsByTagName('carattere')
     for node in carattere:
         name = node.getAttribute('name')
