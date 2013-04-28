@@ -18,7 +18,7 @@ def createSvg(nome, width, height):
     file.write('<?xml version="1.0" standalone="no"?>' + '\n' + '<svg width="'+ str(width) + '" height="'+ str(height) + '" version="1.1" xmlns="http://www.w3.org/2000/svg">' + '\n')
     file.close
 #@param: letter; string; The letter 
-    dom = parse("/home/andrea/Scrivania/csv2xml/Caratteri.xml")
+    dom = parse("/home/andrea/Scrivania/csv2xml/Caratteri2.xml")
     carattere = dom.getElementsByTagName('carattere')
     for node in carattere:
         name = node.getAttribute('name')
@@ -26,19 +26,20 @@ def createSvg(nome, width, height):
     #@param: svg; string; The path name of the file to which I want to add elements
     #@param: elem; string; Element to append
     file = open(nome + '.svg', 'a+')
-    lines = file.readlines()
-    i = 0
+    lines = file.readlines() 
     counter = False
     for line in lines:
         if line == "</svg>":
-            counter = True        
+            counter = True 
+    i = 0       
     if counter == True:
         open(nome, 'a+').writelines(lines[:-1])
     for value in code:
-        if value == "1":
-            elem = createLine(i, 0, i, 200, "red", 1)
-        elif value == "0":
-            elem = createLine(i, 0, i, 200, "white", 1)
+        print i
+        if ((i % 2) == 0):
+            elem = createLine(3 + i, 0, 3 + i, 200, "black", int(value))
+        elif ((i % 2) == 1):
+            elem = createLine(3 + i, 0, 3 + i, 200, "white", int(value))
         i = i + 1   
         file.write(elem)
         print elem
