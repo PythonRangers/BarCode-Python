@@ -4,11 +4,11 @@
     <carattere name="Ô">11011001100</carattere>
     <carattere name="ü">11011001100</carattere>
     <carattere name="!">11001101100</carattere>
-    <carattere name="a">11001100110</carattere>
+    <carattere name="&#34;">11001100110</carattere>
     <carattere name="#">10010011000</carattere>
     <carattere name="$">10010001100</carattere>
     <carattere name="%">10001001100</carattere>
-    <carattere name="x">10011001000</carattere>
+    <carattere name="&#38;">10011001000</carattere>
     <carattere name="'">10011000100</carattere>
     <carattere name="(">10001100100</carattere>
     <carattere name=")">11001001000</carattere>
@@ -30,7 +30,7 @@
     <carattere name="9">11100101100</carattere>
     <carattere name=":">11100100110</carattere>
     <carattere name=";">11101100100</carattere>
-    <carattere name="v">11100110100</carattere>
+    <carattere name="&#60;">11100110100</carattere>
     <carattere name="=">11100110010</carattere>
     <carattere name=">">11011011000</carattere>
     <carattere name="?">11011000110</carattere>

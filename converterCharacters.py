@@ -2,13 +2,15 @@
 # This module is usefull to create an .xml file of characters from a .csv
 # 
 # Created on: 27/apr/2013
-# Last modified on: 27/apr/2013
+# Last modified on: 28/apr/2013
 # Author: pincopallino93
 #===============================================================================
-
-#ATTENZIONE!!! Alcuni caratteri non sono letti in modo corretto da xml e quindi 
-#vi sono errori ed il file non può essere parsato in seconda battuta. Bisogna trovare
-#il modo di passarli, penso ad una codifica del tipo http://www.guru4.net/articoli/xml-escape/ 
+# WARNING!!! Some characters are not read correctly by .xml and for this there is 
+# an error in the parsing. It is necessary to correct them manually (because of 
+# programmer's laziness :D):
+# " = &#34; 
+# & = &#38;
+# < = &#60; 
 from csv import reader
 csvFile = 'Caratteri.csv'
 openCsv = open(csvFile)
