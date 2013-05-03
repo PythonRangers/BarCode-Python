@@ -6,9 +6,9 @@
 # Author: ?
 #===============================================================================
 from csv import reader
-csvFile = 'Comuni.csv'
+csvFile = '/data/Comuni.csv'
 openCsv = open(csvFile)
-xmlFile = 'Comuni.xml'
+xmlFile = '/data/Comuni.xml'
 csvData = reader(openCsv)
 xmlData = open(xmlFile, 'w')
 xmlData.write('<?xml version="1.0"?>' + "\n")

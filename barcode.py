@@ -12,9 +12,9 @@ def makeLetter(letter, code):
 #@param: letter; string; The letter 
     from xml.dom.minidom import parse
   #  if code == 39:
-   #     parser = parse("/home/pcx/Documenti/workspace/csv2xml/Caratteri_39.xml")
+   #     parser = parse("/data/Caratteri_39.xml")
  #   elif code == 128:
-    parser = parse("/home/pcx/Documenti/workspace/csv2xml/Caratteri.xml") 
+    parser = parse("/data/Caratteri.xml") 
     carattere = parser.getElementsByTagName('carattere')
     for node in carattere:
         name = node.getAttribute('name')
@@ -23,7 +23,7 @@ def makeLetter(letter, code):
             return code
 def svgLetter(code,j):
 #@param: code; string; The letter code returned from makeLetter    
-    from simplySvg import createLine
+    from utility.simplySvg import createLine
     i = 0
     codeSvg = []
     for value in code:
@@ -40,7 +40,7 @@ def codeControl(code):
     return codeControl #array, iniziale e finale
 def main(word, code):
 #@param: word; string; The world to convert in Code 128
-    from simplySvg import createSvg, addElem, saveSvg
+    from utility.simplySvg import createSvg, addElem, saveSvg
     lunghezza = len(word) * 11 + 50
     svg = createSvg(word + '_' + str(code), lunghezza, 100)
     #addElem(svg, codeControlInitial)

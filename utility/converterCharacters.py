@@ -6,9 +6,9 @@
 # Author: pincopallino93
 #===============================================================================
 from csv import reader
-csvFile = '/home/pcx/Documenti/workspace/csv2xml/Caratteri.csv'
+csvFile = '/data/Caratteri.csv'
 openCsv = open(csvFile)
-xmlFile = '/home/pcx/Documenti/workspace/csv2xml/Caratteri.xml'
+xmlFile = '/data/Caratteri.xml'
 csvData = reader(openCsv)
 xmlData = open(xmlFile, 'w')
 xmlData.write('<?xml version="1.0"?>' + "\n")
