@@ -5,14 +5,17 @@
 # bar code through a word
 # 
 # Created on: 27/apr/2013
-# Last modified on: 28/apr/2013
+# Last modified on: 02/may/2013
 # Author: pincopallino93
 #===============================================================================
-def makeLetter(letter):
+def makeLetter(letter, code):
 #@param: letter; string; The letter 
     from xml.dom.minidom import parse
-    dom = parse("Caratteri.xml")
-    carattere = dom.getElementsByTagName('carattere')
+  #  if code == 39:
+   #     parser = parse("/home/pcx/Documenti/workspace/csv2xml/Caratteri_39.xml")
+ #   elif code == 128:
+    parser = parse("/home/pcx/Documenti/workspace/csv2xml/Caratteri.xml") 
+    carattere = parser.getElementsByTagName('carattere')
     for node in carattere:
         name = node.getAttribute('name')
         code = node.childNodes[0].nodeValue
@@ -25,24 +28,29 @@ def svgLetter(code,j):
     codeSvg = []
     for value in code:
         if value == "1":
-            line = createLine(i + j, 0, i + j, 50, "black", 1)
+            line = createLine(25 + i + j, 25, 25 + i + j, 75, "black", 1)
             codeSvg.append(line)
         elif value == "0":
-            line = createLine(i + j, 0, i + j, 50, "white", 1)
+            line = createLine(25 + i + j, 25, 25 + i + j, 75, "white", 1)
             codeSvg.append(line)
         i = i + 1
     return codeSvg
-def main(word):
+def codeControl(code):
+    #asdfasdf
+    return codeControl #array, iniziale e finale
+def main(word, code):
 #@param: word; string; The world to convert in Code 128
     from simplySvg import createSvg, addElem, saveSvg
-    svg = createSvg(word, 200, 200)
+    lunghezza = len(word) * 11 + 50
+    svg = createSvg(word + '_' + str(code), lunghezza, 100)
+    #addElem(svg, codeControlInitial)
     j = 0
     codeWord = []
     for elem in word:
-        numeri= makeLetter(elem)
-        print numeri
-        code = svgLetter(numeri, j) 
+        caratteri = makeLetter(elem, code)
+        code = svgLetter(caratteri, j) 
         j = j + 11
         for riga in code:
             addElem(svg, riga)
+    #addElem(svg, codeControlFinal)
     saveSvg(svg)
