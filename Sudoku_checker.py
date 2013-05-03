@@ -13,7 +13,7 @@ def row_check():
      oki.append(True)
    else:
     oki.append(False)
-  if oki == 2*[True]:               #Every rows is ok? Yes or no
+  if oki == 9*[True]:               #Every rows is ok? Yes or no
    return True
   else:
    return False
