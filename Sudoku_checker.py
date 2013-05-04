@@ -1,14 +1,27 @@
 def main():
-  sudoku = [[4,1,2,5,7,6,9,3,8],[8,6,9,2,3,1,7,5,4],[5,3,7,8,9,4,6,2,1],[9,8,6,3,1,5,4,7,2],[1,4,5,6,2,7,3,8,9],[2,7,3,4,8,9,5,1,6],[7,2,1,9,4,3,8,6,5],[3,5,4,1,6,8,2,9,7],[6,9,8,7,5,2,1,4,3]]
-  x = row_check(sudoku)
-  matrix = column_creator(sudoku)
-  column = column_divider(matrix)
-  y = row_check(column)
-  if x and y:
+  choice = int(input("Do you want to try a random sudoku or check it in a .txt file? [1/2]: "))
+  if choice == 1:	
+    sudoku = [[5, 4, 3, 6, 7, 8, 9, 1, 2], [6, 7, 2, 1, 9, 5, 3, 4, 8], [1, 9, 8, 3, 4, 2, 5, 6, 7], [8, 5, 9, 7, 6, 1, 4, 2, 3], [4, 2, 6, 8, 5, 3, 7, 9, 1], [7, 1, 3, 9, 2, 4, 8, 5, 6], [9, 6, 1, 5, 3, 7, 2, 8, 4], [2, 8, 7, 4, 1, 9, 6, 3, 5], [3, 4, 5, 2, 8, 6, 1, 7, 9]]
+    x = row_check(sudoku)
+    matrix = column_creator(sudoku)
+    column = column_divider(matrix)
+    y = row_check(column)
+    if x and y:
+     print sudoku
+     return true
+    return false
+  else:
+    sudoku = reader()
     print sudoku
-    return true
-  return false
-  
+    x = row_check(sudoku)
+    matrix = column_creator(sudoku)
+    column = column_divider(matrix)
+    y = row_check(column)
+    if x and y:
+      print sudoku
+      return true
+    return false
+
 ##############################################################################
   
 def row_check(sudoku):        
@@ -68,3 +81,23 @@ def randos():
      row.append([randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9),randrange(1,9)])
   sudoku.extend(row)
   return sudoku
+
+##############################################################################
+
+def reader():
+  import string 
+  path = raw_input('Inserisci il percorso del file: ')
+  file = open(path,'r')
+  elem = []
+  row = []
+  while 1:
+    line = file.readlines()
+    if line == []:
+      break
+    for i in range(0,len(line)):
+     elem = string.split(line[i],"\t")
+     for x in range(0,len(elem)):
+       row.append(int(elem[x]))
+  return column_divider(row)
+  file.close()
+  
