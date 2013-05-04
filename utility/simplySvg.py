@@ -1,5 +1,5 @@
 #===============================================================================
-# This module is usefull to create simply a new .svg file
+# This module is usefull to simply create a new .svg file
 # 
 # Created on: 24/apr/2013
 # Last modified on: 27/apr/2013
